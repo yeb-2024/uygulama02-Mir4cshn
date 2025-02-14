@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GirisSayfam {
+public class GirisSayfam implements ActionListener {
      JFrame frame;
      JTextField kullanıcıAdı,sifre;
+     JButton button;
      public GirisSayfam(){
          JPanel panelUst = new JPanel();
          panelUst.setLayout(new FlowLayout());
@@ -11,7 +14,7 @@ public class GirisSayfam {
          labelUst.setFont(new Font("Arial",Font.PLAIN,20));
 
          kullanıcıAdı = new JTextField();
-         kullanıcıAdı.setPreferredSize(new Dimension(300,60));
+         kullanıcıAdı.setPreferredSize(new Dimension(200,40));
 
          panelUst.add(labelUst);
          panelUst.add(kullanıcıAdı);
@@ -23,11 +26,14 @@ public class GirisSayfam {
          labelAlt.setFont(new Font("Arial",Font.PLAIN,20));
 
          sifre = new JTextField();
-         sifre.setPreferredSize(new Dimension(300,60));
+         sifre.setPreferredSize(new Dimension(200,40));
 
          panelAlt.add(labelAlt);
          panelAlt.add(sifre);
 
+         button = new JButton("Giriş Yap");
+         button.setFont(new Font("Arial",Font.PLAIN,20));
+         button.addActionListener(this);
 
          frame = new JFrame();
 
@@ -38,8 +44,23 @@ public class GirisSayfam {
 
          frame.add(panelUst);
          frame.add(panelAlt);
-
+         frame.add(button);
 
          frame.setVisible(true);
      }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == button){
+            String kullanıcıAdi = this.kullanıcıAdı.getText().trim();
+            String sifre = this.sifre.getText().trim();
+
+           if(kullanıcıAdi.isEmpty() || sifre.isEmpty()){
+               JOptionPane.showMessageDialog(null
+                       ,"Lütfen tum alanları doldurun."
+                       ,"Hata"
+                       ,JOptionPane.ERROR_MESSAGE);
+           }
+        }
+    }
 }
