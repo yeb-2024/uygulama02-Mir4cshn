@@ -61,6 +61,12 @@ public class GirisSayfam implements ActionListener {
                        ,"Hata"
                        ,JOptionPane.ERROR_MESSAGE);
            }
+           if(sifre.length() < 5){
+               JOptionPane.showMessageDialog(null
+                       ,"Minimum 5 char olmalı."
+                       ,"Adam Akıllı Doldur Su Alanı"
+                       ,JOptionPane.ERROR_MESSAGE);
+           }
         }
     }
 }
